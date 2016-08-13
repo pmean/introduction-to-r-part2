@@ -1,8 +1,13 @@
-# Day 2 lectures and exercises
+---
+title: "Introduction to R, part 2"
+author: "Steve Simon"
+date: "Saturday, August 13, 2016"
+output: html_document
+---
 
-## Read in the Titanic mortality data set
+# Part 2a. Read in the Titanic mortality data set
 
-The following is for my own benefit. You do not need to run this.
+Start with a clean slate.
 
 ```{r clean-slate}
 rm(list=ls())
@@ -18,19 +23,19 @@ A brief description of this file is available at
 
 You need to read in the file using the read.table function.
 
-```{r read}
-# ti <- read.table(file="http://www.statsci.org/data/general/titanic.txt")
+```{r read, error=TRUE}
+ti <- read.table(file="http://www.statsci.org/data/general/titanic.txt")
 ```
 
 There is an issue on the 38th line of the file. You need to download the file and fix it and then read it locally.
 
-```{r read2}
+```{r read2, error=TRUE}
 # ti <- read.table(file="day2_titanic_v02.txt")
 ```
 
 Oops! There is one more problem, fix this, save under a different name and then read it in.
 
-```{r read3}
+```{r read3, error=TRUE}
 ti <- read.table(file="day2_titanic_v03.txt")
 head(ti)
 tail(ti)
@@ -38,7 +43,7 @@ tail(ti)
 
 Darn it all, we almost have it. But the variable names are listed as the first row of the data set. Take a look at the help file for the read.table function to see how to fix this.
 
-```{r read4}
+```{r read4, error=TRUE}
 ti <- read.table(file="day2_titanic_v03.txt",header=TRUE)
 head(ti)
 tail(ti)
@@ -60,7 +65,7 @@ The distinction between continuous and categorical variables is important in dec
 
 There are other types of variables also, such as count variables, that have their own special features.
 
-## Frequency counts
+# Part 2b. Frequency counts
 
 For categorical variables, you should first get frequency counts.
 
@@ -113,14 +118,9 @@ comma <- ", "
 paste(names(tb),colon,tb,slash,n,comma,pct,pct.sign,sep="")
 ```
 
-This shows how I like to program in R. First, get something simple.
-Then slowly add layers to it until you get a nice polished product.
+This shows how I like to program in R. First, get something simple. Then slowly add layers to it until you get a nice polished product.
 
-In contrast, most other statistical packages try to produce
-polished results right from the start. This has some advantages,
-but the approach used by R, where many of the functions do 
-something simple and basic, allows you to polish the results
-the way you want them.
+In contrast, most other statistical packages try to produce polished results right from the start. This has some advantages, but the approach used by R, where many of the functions do something simple and basic, allows you to polish the results the way you want them.
 
 # Tables that include counts of missing values.
 
@@ -140,10 +140,11 @@ addmargins(table(ti$PClass,useNA="always"))
 
 Run frequency counts for Sex and Survived. Be sure to look for missing values for these two variables.
 
+# Part 2c. Factors
+
 ## Use of the summary function
 
-Last time, we learned about the summary function, which produced the minimum, maximum, quartiles, mean, and missing value counts. Summary will actually look at the argument being passed to it and try to produce different summary statistics based on what the argument looks like. This, in technical terms, is an
-object-oriented feature of the R programming language (the use of classes and methods, to be more specificd).
+Last time, we learned about the summary function, which produced the minimum, maximum, quartiles, mean, and missing value counts. Summary will actually look at the argument being passed to it and try to produce different summary statistics based on what the argument looks like. This, in technical terms, is an object-oriented feature of the R programming language (the use of classes and methods, to be more specificd).
 
 If the argument sent to summary is a character vector rather than a numeric vector, it will use frequency counts. So notice the difference between 
 
@@ -164,8 +165,6 @@ summary(ti$Sex)
 summary(ti$Survived)
 ```
 
-## Factors
-
 When you have a categorical variable that uses number codes, you need to either handle this as a special case, or you need to create a factor variable.
 
 ```{r summary4}
@@ -175,7 +174,7 @@ summary(ti$surv.factor)
 
 The factor function is similar to the variable label in SPSS and the format statement in SAS. It assigns category names (No and Yes) to numeric codes (0 and 1). It also has other features that are helpful in linear and logistic regression models, such as the ability to specify contrasts.
 
-## Bar plots
+# Par 2d. Bar plots
 
 I'm not a big fan of bar plots, but they sometimes have their uses. You can get a barplot for the frequency count
 
@@ -200,7 +199,7 @@ axis(side=2,at=10*(0:5),labels=paste(10*(0:5),"%",sep=""))
 
 Add label "Passenger class" to the x-axis of this bar plot.
 
-## Crosstabulations
+# Part 2e. Crosstabulations
 
 When you are looking at the relationship between two categorical variables, you need to start with a crosstabulation. You use the table function in R with two arguments to create a crosstabulation.
 
@@ -254,7 +253,7 @@ but to be honest, the best approach is to try several approaches and see what wo
 
 Compute a table showing the relationship between sex and survival. The Titanic sunk during a time when people really did believe in the phrase "women and children first". Find a table of percentages that shows the degree to which women were more likely to survive than men.
 
-## Creating new categorical variables
+# Part 2f. Creating new categorical variables
 
 There are several ways to create a new categorical variable in R, but the easiest way is through the use of logical comparisons.
 
@@ -308,7 +307,7 @@ ti$age.groups <- cut(ti$Age,breaks=c(0,2,6,9,12,19,99),labels=lb)
 table(ti$age.groups,useNA="always")
 ```
 
-## Odds ratios and relative risks
+# Part 2g. Odds ratios and relative risks
 
 The odds ratio and the relative risk are two measures that summarize the relationship between two categorical variables. They are most easily computed for binary variables, but there are extensions for variables with more than two categories.
 
