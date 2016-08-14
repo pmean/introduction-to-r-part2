@@ -9,7 +9,7 @@ output: html_document
 
 Erase any stray data and load the data from part 2a.
 
-```{r read_part-2a-data}
+```{r read-part-2a-data}
 rm(list=ls())
 load(file="part2a.RData")
 ```
