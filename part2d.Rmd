@@ -1,0 +1,46 @@
+---
+title: "Introduction to R, part 2"
+author: "Steve Simon"
+date: "Saturday, August 13, 2016"
+output: html_document
+---
+
+This program illustrates how to import and manipulate simple data sets in R and how to produce some simple descriptive statistics. Included in this program are some exercises for you to do on your own.
+
+# Par 2d. Bar plots
+
+Let's erase any stray data and load the data from part 2c.
+
+```{r read-part-2c-data}
+rm(list=ls())
+load(file="part2c.RData")
+```
+
+I'm not a big fan of bar plots, but they sometimes have their uses. You can get a barplot for the frequency count
+
+```{r barplot}
+barplot(table(ti$PClass))
+```
+
+or for the percentage (note the use of the ylab argument here).
+
+```{r barplot2}
+barplot(100*prop.table(table(ti$PClass)),ylab="Percent")
+```
+
+You can make things even nicer by pasting a percent sign on the vertical axis tick marks.
+
+```{r barplot3}
+barplot(100*prop.table(table(ti$PClass)),axes=FALSE)
+axis(side=2,at=10*(0:5),labels=paste(10*(0:5),"%",sep=""))
+```
+
+## On your own
+
+Add label "Passenger class" to the x-axis of this bar plot.
+
+## Save all my work
+
+```{r save-image}
+save.image("part2d.RData")
+```
