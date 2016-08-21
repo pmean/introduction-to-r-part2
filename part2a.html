@@ -122,8 +122,11 @@ $(document).ready(function () {
 </div>
 
 
-<div id="part-2a.-read-in-the-titanic-mortality-data-set" class="section level1">
-<h1>Part 2a. Read in the Titanic mortality data set</h1>
+<p>This program is part of a series of R programs for the Introduction to R class. This program shows you how to import a data set on mortality aboard the Titanic.</p>
+<pre class="r"><code>R.version.string</code></pre>
+<pre><code>## [1] &quot;R version 3.3.1 (2016-06-21)&quot;</code></pre>
+<pre class="r"><code>Sys.Date()</code></pre>
+<pre><code>## [1] &quot;2016-08-21&quot;</code></pre>
 <p>Start with a clean slate.</p>
 <pre class="r"><code>rm(list=ls())</code></pre>
 <p>You should find the data file on mortality among passengers of the Titanic at</p>
@@ -131,13 +134,21 @@ $(document).ready(function () {
 <p>A brief description of this file is available at</p>
 <p>–&gt; <a href="http://www.statsci.org/data/general/titanic.html" class="uri">http://www.statsci.org/data/general/titanic.html</a></p>
 <p>You need to read in the file using the read.table function.</p>
-<pre class="r"><code>ti &lt;- read.table(file=&quot;http://www.statsci.org/data/general/titanic.txt&quot;)</code></pre>
+<pre class="r"><code>fn &lt;- &quot;http://www.statsci.org/data/general/titanic.txt&quot;
+ti &lt;- read.table(file=fn)</code></pre>
 <pre><code>## Error in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, : line 38 did not have 5 elements</code></pre>
 <p>There is an issue on the 38th line of the file. You need to download the file and fix it and then read it locally.</p>
-<pre class="r"><code>ti &lt;- read.table(file=&quot;titanicv02.txt&quot;)</code></pre>
+<p>First, read the original file to confirm the error.</p>
+<pre class="r"><code>fn &lt;- &quot;titanic_v00.txt&quot;
+ti &lt;- read.table(file=fn)</code></pre>
+<pre><code>## Error in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, : line 38 did not have 5 elements</code></pre>
+<p>We removed some double quote marks from line 38: Brown, Mrs James Joseph (Margaret Molly Tobin).</p>
+<pre class="r"><code>fn &lt;- &quot;titanic_v01.txt&quot;
+ti &lt;- read.table(file=fn)</code></pre>
 <pre><code>## Error in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, : line 458 did not have 5 elements</code></pre>
-<p>Oops! There is one more problem, fix this, save under a different name and then read it in.</p>
-<pre class="r"><code>ti &lt;- read.table(file=&quot;titanicv03.txt&quot;)
+<p>Oops! There is one more problem. Quote marks needed to be added to line 458: Jacobsohn Mr Sidney Samuel. Fix this, save under a different name and then read it in.</p>
+<pre class="r"><code>fn &lt;- &quot;titanic_v02.txt&quot;
+ti &lt;- read.table(file=fn)
 head(ti)</code></pre>
 <pre><code>##                                              V1     V2   V3     V4
 ## 1                                          Name PClass  Age    Sex
@@ -162,7 +173,7 @@ head(ti)</code></pre>
 ## 1313       Lievens, Mr Rene 3rd   24   male  0
 ## 1314         Zimmerman, Leo 3rd   29   male  0</code></pre>
 <p>Darn it all, we almost have it. But the variable names are listed as the first row of the data set. Take a look at the help file for the read.table function to see how to fix this.</p>
-<pre class="r"><code>ti &lt;- read.table(file=&quot;titanicv03.txt&quot;,header=TRUE)
+<pre class="r"><code>ti &lt;- read.table(file=fn, header=TRUE)
 head(ti)</code></pre>
 <pre><code>##                                            Name PClass   Age    Sex
 ## 1                  Allen, Miss Elisabeth Walton    1st 29.00 female
@@ -186,6 +197,10 @@ head(ti)</code></pre>
 ## 1311       Zenni, Mr Philip    3rd  22   male        0
 ## 1312       Lievens, Mr Rene    3rd  24   male        0
 ## 1313         Zimmerman, Leo    3rd  29   male        0</code></pre>
+<p>Just for the record, you can read the original file without any difficulty by adding an option under the “sep” argument. The default is to separate by white space (blanks or tabs, mostly), but when some of the quoted names are not quoted properly, the spaces in the names throw things off. If you separate just by tabs and not by tabs and/or spaces, everything works perfectly.</p>
+<p>I only found this out, by the way, through trial and error.</p>
+<pre class="r"><code>fn &lt;- &quot;http://www.statsci.org/data/general/titanic.txt&quot;
+ti &lt;- read.table(file=fn, sep=&quot;\t&quot;, header=TRUE)</code></pre>
 <p>Notice that Miss Tamini Zabour has an “NA” for age. We’ll take a careful look at this later.</p>
 <div id="on-your-own" class="section level2">
 <h2>On your own</h2>
@@ -201,7 +216,6 @@ head(ti)</code></pre>
 <div id="save-all-my-work" class="section level2">
 <h2>Save all my work</h2>
 <pre class="r"><code>save.image(&quot;part2a.RData&quot;)</code></pre>
-</div>
 </div>
 
 

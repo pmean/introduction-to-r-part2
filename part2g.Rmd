@@ -1,14 +1,16 @@
 ---
-title: "Introduction to R, part 2"
+title: "Introduction to R, part 2g"
 author: "Steve Simon"
 date: "Saturday, August 13, 2016"
 output: html_document
 ---
 
-This program illustrates how to import and manipulate simple data sets in R and how to produce some simple descriptive statistics. Included in this program are some exercises for you to do on your own.
+This program is part of a series of R programs for the Introduction to R class. This program shows you how to calculate odds ratios and relative risks.
 
-
-# Part 2g. Odds ratios and relative risks
+```{r r-version-and-current-date}
+R.version.string
+Sys.Date()
+```
 
 Let's erase any stray data and load the data from part 2f.
 
@@ -82,7 +84,7 @@ and a description of the file is available at
 Note to myself. I have not run through the analysis of this data set, yet, but it should have many of the same features as the Titanic data set, as almost all of the variables are categorical.
 
 ```{r read-gardasil}
-fn <- "day2_gardasil.csv"
+fn <- "gardasil.csv"
 ga <- read.csv(fn)
 ```
 
