@@ -14,9 +14,11 @@ Sys.Date()
 
 Let's erase any stray data and load the data from part 2b.
 
-```{r read-part-2b-data}
+```{r read-part2-data}
+ls()
 rm(list=ls())
-load(file="part2b.RData")
+load(file="part2.RData")
+ls()
 ```
 
 Last time, we learned about the summary function, which produced the minimum, maximum, quartiles, mean, and missing value counts. Summary will actually look at the argument being passed to it and try to produce different summary statistics based on what the argument looks like. This, in technical terms, is an object-oriented feature of the R programming language (the use of classes and methods, to be more specific).
@@ -52,5 +54,9 @@ The factor function is similar to the variable label in SPSS and the format stat
 ## Save all my work
 
 ```{r save-image}
-save.image("part2c.RData")
+save.image("part2.RData")
 ```
+
+Please take the time to answer the quiz found at
+
+http://www.pmean.com/15/images/quiz2c.html

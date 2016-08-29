@@ -14,9 +14,11 @@ Sys.Date()
 
 Erase any stray data and load the data from part 2a.
 
-```{r read-part-2a-data}
+```{r read-part2-data}
+ls()
 rm(list=ls())
-load(file="part2a.RData")
+load(file="part2.RData")
+ls()
 ```
 
 For categorical variables, you should first get frequency counts.
@@ -97,3 +99,7 @@ Run frequency counts for Sex and Survived. Be sure to look for missing values fo
 ```{r save-image}
 save.image("part2b.RData")
 ```
+
+Please take the time to answer the quiz found at
+
+http://www.pmean.com/15/images/quiz2b.html

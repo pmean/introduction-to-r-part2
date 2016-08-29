@@ -78,7 +78,7 @@ ti <- read.table(file=fn, sep="\t", header=TRUE)
 
 Notice that Miss Tamini Zabour has an "NA" for age.  We'll take a careful look at this later.
 
-## On your own
+## On your own (you do not need to turn this in)
 
 Who is the oldest passenger on the Titanic. Did he/she survive?
 
@@ -95,5 +95,9 @@ There are other types of variables also, such as count variables, that have thei
 ## Save all my work
 
 ```{r save-image}
-save.image("part2a.RData")
+save.image("part2.RData")
 ```
+
+Please take the time to answer the quiz found at
+
+http://www.pmean.com/15/images/quiz2a.html

@@ -126,10 +126,14 @@ $(document).ready(function () {
 <pre class="r"><code>R.version.string</code></pre>
 <pre><code>## [1] &quot;R version 3.3.1 (2016-06-21)&quot;</code></pre>
 <pre class="r"><code>Sys.Date()</code></pre>
-<pre><code>## [1] &quot;2016-08-21&quot;</code></pre>
+<pre><code>## [1] &quot;2016-08-28&quot;</code></pre>
 <p>Let’s erase any stray data and load the data from part 2b.</p>
+<pre class="r"><code>ls()</code></pre>
+<pre><code>## character(0)</code></pre>
 <pre class="r"><code>rm(list=ls())
-load(file=&quot;part2b.RData&quot;)</code></pre>
+load(file=&quot;part2.RData&quot;)
+ls()</code></pre>
+<pre><code>## [1] &quot;fn&quot; &quot;ti&quot;</code></pre>
 <p>Last time, we learned about the summary function, which produced the minimum, maximum, quartiles, mean, and missing value counts. Summary will actually look at the argument being passed to it and try to produce different summary statistics based on what the argument looks like. This, in technical terms, is an object-oriented feature of the R programming language (the use of classes and methods, to be more specific).</p>
 <p>If the argument sent to summary is a character vector rather than a numeric vector, it will use frequency counts. So notice the difference between</p>
 <pre class="r"><code>summary(ti$PClass)</code></pre>
@@ -154,7 +158,9 @@ summary(ti$surv.factor)</code></pre>
 <p>The factor function is similar to the variable label in SPSS and the format statement in SAS. It assigns category names (No and Yes) to numeric codes (0 and 1). It also has other features that are helpful in linear and logistic regression models, such as the ability to specify contrasts.</p>
 <div id="save-all-my-work" class="section level2">
 <h2>Save all my work</h2>
-<pre class="r"><code>save.image(&quot;part2c.RData&quot;)</code></pre>
+<pre class="r"><code>save.image(&quot;part2.RData&quot;)</code></pre>
+<p>Please take the time to answer the quiz found at</p>
+<p><a href="http://www.pmean.com/15/images/quiz2c.html" class="uri">http://www.pmean.com/15/images/quiz2c.html</a></p>
 </div>
 
 

@@ -14,8 +14,10 @@ Sys.Date()
 Let's erase any stray data and load the data from part 2d.
 
 ```{r read-part-2d-data}
+ls()
 rm(list=ls())
-load(file="part2d.RData")
+load(file="part2.RData")
+ls()
 ```
 
 When you are looking at the relationship between two categorical variables, you need to start with a crosstabulation. You use the table function in R with two arguments to create a crosstabulation.
@@ -73,5 +75,9 @@ Compute a table showing the relationship between sex and survival. The Titanic s
 ## Save all my work
 
 ```{r save-image}
-save.image("part2e.RData")
+save.image("part2.RData")
 ```
+
+Please take the time to answer the quiz found at
+
+http://www.pmean.com/15/images/quiz2e.html

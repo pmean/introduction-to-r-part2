@@ -14,9 +14,11 @@ Sys.Date()
 
 Let's erase any stray data and load the data from part 2e.
 
-```{r read-part-2e-data}
+```{r read-part2-data}
+ls()
 rm(list=ls())
-load(file="part2e.RData")
+load(file="part2.RData")
+ls()
 ```
 
 There are several ways to create a new categorical variable in R, but the easiest way is through the use of logical comparisons.
@@ -74,12 +76,16 @@ table(ti$age.groups,useNA="always")
 lb <- c("Infant (up to 2 yrs)","Toddler (3 to 6 yrs)","Child (7 to 9 yrs)","Tween (10 to 12 yrs)","Teenager (13 to 19 yrs)","Adult (20 yrs and older")
 ```
 
-## On your own
+## On your own (you do not need to turn this in)
 
 Create a new variable which is 1 for senior citizens (65 yrs and older), 0 for younger than that age, and NA if the age is unknown.
 
 ## Save all my work
 
 ```{r save-image}
-save.image("part2f.RData")
+save.image("part2.RData")
 ```
+
+Please take the time to answer the quiz found at
+
+http://www.pmean.com/15/images/quiz2f.html

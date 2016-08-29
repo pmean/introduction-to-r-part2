@@ -14,9 +14,11 @@ Sys.Date()
 
 Let's erase any stray data and load the data from part 2f.
 
-```{r read-part-2f-data}
+```{r read-part2-data}
+ls()
 rm(list=ls())
-load(file="part2f.RData")
+load(file="part2.RData")
+ls()
 ```
 
 The odds ratio and the relative risk are two measures that summarize the relationship between two categorical variables. They are most easily computed for binary variables, but there are extensions for variables with more than two categories.
@@ -88,23 +90,13 @@ fn <- "gardasil.csv"
 ga <- read.csv(fn)
 ```
 
-## On your own
+## Homework assignment #2.
 
-1. Create factors for AgeGroup, Race, Completed, Location.
+Answer the questions found at
 
-2. Report which variables have missing data and how many of these values are missing.
+http://www.pmean.com/15/images/
 
-3. What proportion of patients completed all three shots?
-
-4. Draw a bar chart showing the percentage of patients at each of the four locations.
-
-5. Use a crosstabulation to compare Age to AgeGroup, and Location to LocationType. Are the recodings into AgeGroup and LocationType done properly?
-
-6. Create a new variable that combines the race categories into white, and non-white. Calculate the proportion of white patients at each of the four locations.
-
-7. Does the likelihood of completing all four shots vary by AgeGroup, Race, or Location? Calculate the appropriate percentages and relative risks.
-
-8. Place all the key results into a Word document, add a bit of commentary, and turn it in.
+Place all the key results into a Word document, PowerPoint presentation, as a PDF file or as an HTML file. Turn it in by email. Use the subject line: "Introduction to R, (your name), Part 2 Homework"
 
 ## A third data set
 
@@ -118,5 +110,7 @@ diet <- read.table(fn, skip=26, comment.char="<", header=TRUE)
 ## Save all my work
 
 ```{r save-image}
-save.image("part2g.RData")
+save.image("part2.RData")
 ```
+
+There is no quz for Part 2g. Start on you homework assignment instead, please.
